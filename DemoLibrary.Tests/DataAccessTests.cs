@@ -33,5 +33,23 @@ namespace DemoLibrary.Tests
 
             Assert.Throws<ArgumentException>(param, () => DataAccess.AddPersonToPeopleList(people, newPerson));
         }
+
+        [Fact]
+        public void ConvertModelsToCSV_ShouldWork()
+        {
+            PersonModel newPerson1 = new PersonModel { FirstName = "Sebastian", LastName = "Nekopik" };
+            PersonModel newPerson2 = new PersonModel { FirstName = "Jan", LastName = "Kowalski" };
+            string Person = "Sebastian,Nekopik";
+
+            List<PersonModel> people = new List<PersonModel>();
+            people.Add(newPerson1);
+            people.Add(newPerson2);
+
+            List<string> output = DataAccess.ConvertModelsToCSV(people);
+
+            Assert.Contains(newPerson2, people);
+            Assert.Contains(Person, output);
+
+        }
     }
 }
