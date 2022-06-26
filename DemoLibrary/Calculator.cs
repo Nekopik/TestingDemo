@@ -20,7 +20,15 @@ namespace DemoLibrary
 
         public static double Multiply(double x, double y)
         {
-            return x * y;
+            if(x != double.MaxValue && y != double.MinValue)
+            {
+                return x * y;
+            }
+            else
+            {
+                return double.MaxValue; //custom business logic for multiply by MaxValue
+            }
+            
         }
 
         public static double Divide(double x, double y)
